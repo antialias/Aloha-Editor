@@ -110,7 +110,14 @@ define([
 	 */
 	function attrNames(elem) {
 		var names = [];
+<<<<<<< HEAD
 		var html = outerHtml(elem.cloneNode(false));
+=======
+		var html = elem.cloneNode(false).outerHTML;
+		if (undefined === html) { // some browsers return undefined for outerHTML on non-standard elements
+			html = $("<div>").append(elem.cloneNode(false)).html();
+		}
+>>>>>>> e1a2a8b11a1b946f90253431c007b86909f7e9c8
 		var match;
 		while (null != (match = attrRegex.exec(html))) {
 			names.push(match[1]);

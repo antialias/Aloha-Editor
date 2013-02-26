@@ -365,12 +365,39 @@ define([
 		 * @param {string} plugin Name of plugin
 		 * @return {boolean} True if plugin with given name is load.
 		 */
+<<<<<<< HEAD
 		isPluginLoaded: function (name) {
 			var loaded = false;
 			$.each(this.loadedPlugins, function (i, plugin) {
 				if (name === plugin.toString()) {
 					loaded = true;
 					return false;
+=======
+		isPluginLoaded: function (pluginName) {
+			var found = false;
+			jQuery.each(this.loadedPlugins, function () {
+				if (pluginName.toString() === this.toString()) {
+					found = true;
+				}
+			});
+			return found;
+		},
+
+		/**
+		 * Initialise Aloha
+		 */
+		initAloha: function (next) {
+			var $html = jQuery('html');
+
+			// check browser version on init
+			// this has to be revamped, as
+			if ((jQuery.browser.webkit && parseInt(jQuery.browser.version, 10) < 20) // Chrome/Safari 4
+			         || (jQuery.browser.mozilla && parseFloat(jQuery.browser.version) < 1.9) // FF 3.5
+				     || (jQuery.browser.msie && jQuery.browser.version < 7) // IE 7
+				     || (jQuery.browser.opera && jQuery.browser.version < 11)) { // right now, Opera needs some work
+				if (window.console && window.console.log) {
+					window.console.log('Your browser is not supported.');
+>>>>>>> e1a2a8b11a1b946f90253431c007b86909f7e9c8
 				}
 			});
 			return loaded;
