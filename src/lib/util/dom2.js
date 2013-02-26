@@ -92,7 +92,7 @@ define(['jquery', 'util/maps', 'util/strings', 'util/browser'], function ($, Map
 		var len;
 		for (i = 0, len = names.length; i < len; i++) {
 			var name = names[i];
-			var value = $.attr(elem, name);
+			var value = elem.getAttribute(name);
 			if (null == value) {
 				value = "";
 			} else {
