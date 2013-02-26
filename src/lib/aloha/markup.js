@@ -204,8 +204,8 @@ define([
 		if (!sibling || isBlock(sibling)) {
 			var $landing = jQuery('<div>&nbsp;</div>');
 			if (sibling) {
-				$landing.css('display', $(sibling).css('display'));
-				if ("inline" === $(sibling).css('display')) {
+				$landing.css('display', jQuery(sibling).css('display'));
+				if ("inline" === jQuery(sibling).css('display')) {
 					$landing.html("&#8203;");
 				}
 			}
