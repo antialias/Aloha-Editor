@@ -211,8 +211,6 @@ define([
 	}
 
 	/**
-	 * @TODO(petro): We need to be more intelligent about whether we insert a
-	 *               block-level placeholder or a phrasing level element.
 	 * @TODO(petro): test with <pre>
 	 * @TODO: move to block-jump.js
 	 */
@@ -222,6 +220,12 @@ define([
 
 		if (!sibling || isBlock(sibling)) {
 			var $landing = jQuery('<div class="aloha-placeholder aloha-editing-div">&nbsp;</div>');
+			if (sibling) {
+				$landing.css('display', jQuery(sibling).css('display'));
+				if ("inline" === jQuery(sibling).css('display')) {
+					$landing.html("&#8203;");
+				}
+			}
 
 			if (isGoingLeft) {
 				jQuery(block).before($landing);
